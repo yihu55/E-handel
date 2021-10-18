@@ -3,7 +3,7 @@ const total = document.getElementById("total")
 const varukorgWrapper = document.getElementById("varukorgWrapper")
 const itemContainer = document.getElementById("itemContainer")
 
-let prices = []
+const prices = []
 
 function getData() {
     fetch(url)
@@ -16,15 +16,10 @@ function getData() {
 
 function renderItemList(data) {
     Object.values(data).forEach(item => {
-
-        renderItem(item)
-
-        //filterButtonOnclick(item)
+        renderItem(item) //loop through items and print it out
+            //???filterButtonOnclick(item)
     })
-
-
 }
-
 
 function renderItem(item) {
     const wrapper = document.createElement("div")
@@ -48,12 +43,10 @@ function calculateTotalPrice(item) {
         total += price
     })
     return total
-
 }
 
 function imageOnClick(image, item) {
     image.addEventListener("click", () => {
-
         uppdateTotalPrice(item)
         varukorgTitle()
         uppdateItemList(item)
@@ -67,7 +60,6 @@ function uppdateTotalPrice(item) {
 }
 
 function uppdateItemList(item) {
-
     const li = document.createElement("li")
     li.innerText = `${item.name} - ${item.price}`
     varukorgWrapper.prepend(li)
@@ -75,11 +67,9 @@ function uppdateItemList(item) {
 }
 
 function varukorgTitle() {
-
     const varukorgTitle = document.createElement("h2")
     varukorgTitle.innerText = "Varukorg"
     total.appendChild(varukorgTitle)
-
 }
 
 function createButtonAndClick(item) {
@@ -87,27 +77,12 @@ function createButtonAndClick(item) {
     button.innerText = "köp"
 
     button.addEventListener("click", () => {
-
         uppdateTotalPrice(item)
         varukorgTitle()
         uppdateItemList(item)
     })
     return button
 }
-
-// function filterButtonOnclick(item) {
-//     const button = document.getElementById("filterButton")
-//     button.addEventListener("click", () => {
-//         const input = document.getElementById("input").value
-//         itemContainer.innerHTML = ""
-//         if (item.rating > input) {
-
-//             renderItem(item)
-//                 //console.log(item)
-
-//         }
-//     })
-// }
 
 //get filter button and create filter functionality 
 function filterButtonOnclick(data) {
@@ -122,7 +97,6 @@ function filterButtonOnclick(data) {
                     //console.log(item)
             }
         })
-
     })
 }
 
@@ -152,7 +126,6 @@ function getDescription(item) {
 
 function getPrice(item) {
     const price = document.createElement("p")
-
     price.innerText = `Price: ${item.price}`
     return price
 }
@@ -170,3 +143,18 @@ function getStock(item) {
 }
 
 getData()
+
+//???
+// function filterButtonOnclick(item) {
+//     const button = document.getElementById("filterButton")
+//     button.addEventListener("click", () => {
+//         const input = document.getElementById("input").value
+//         itemContainer.innerHTML = ""
+//         if (item.rating > input) {
+
+//             renderItem(item)
+//                 //console.log(item)
+
+//         }
+//     })
+// }
