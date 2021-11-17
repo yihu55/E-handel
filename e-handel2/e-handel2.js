@@ -16,8 +16,10 @@ function getData() {
 
 function renderItemList(data) {
     Object.values(data).forEach(item => {
-        renderItem(item) //loop through items and print it out
-            //???filterButtonOnclick(item)
+        //loop through items and print it out
+        //filterButtonOnclick(item)
+
+        renderItem(item)
     })
 }
 
@@ -92,14 +94,30 @@ function filterButtonOnclick(data) {
         const input = document.getElementById("input").value
         itemContainer.innerHTML = ""
         Object.values(data).filter(item => {
-            if (item.rating > input) {
+            if (item.rating >= input) {
                 renderItem(item)
                     //console.log(item)
             }
         })
     })
 }
+// function filterButtonOnclick(item) {
+//     const button = document.getElementById("filterButton")
+//     button.addEventListener("click", () => {
 
+//         const input = document.getElementById("input").value
+//         itemContainer.innerHTML = ""
+//         if (item.rating >= input) {
+
+//             //console.log(item.rating >= input) //true
+//             console.log(item) //{}objects
+
+//             renderItem(item)
+//                 //console.log(item)
+
+//         }
+//     })
+// }
 //below render items name,image,description,price,rating and stock
 
 function getName(item) {
@@ -143,18 +161,3 @@ function getStock(item) {
 }
 
 getData()
-
-//???
-// function filterButtonOnclick(item) {
-//     const button = document.getElementById("filterButton")
-//     button.addEventListener("click", () => {
-//         const input = document.getElementById("input").value
-//         itemContainer.innerHTML = ""
-//         if (item.rating > input) {
-
-//             renderItem(item)
-//                 //console.log(item)
-
-//         }
-//     })
-// }
