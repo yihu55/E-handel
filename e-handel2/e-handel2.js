@@ -10,6 +10,7 @@ function getData() {
         .then(res => res.json())
         .then(data => {
             renderItemList(data)
+            console.log(data)
             filterButtonOnclick(data)
         })
 }
@@ -18,7 +19,6 @@ function renderItemList(data) {
     Object.values(data).forEach(item => {
         //loop through items and print it out
         //filterButtonOnclick(item)
-
         renderItem(item)
     })
 }
